@@ -5,13 +5,12 @@ import { TaskProvider } from '../TodoWrapper/TodoWrapper'
 export const Task = ({ id, name }) => {
   const { onDeleteTask, onEditTask } = useContext(TaskProvider)
   const [isEditing, setIsEditing] = useState(false)
+  const [value, setValue] = useState(name)
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    const nameEdited = e.target.editInput.value
-
-    onEditTask(id, nameEdited)
+    onEditTask(id, value)
     setIsEditing(false)
   }
 
@@ -23,7 +22,11 @@ export const Task = ({ id, name }) => {
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <input defaultValue={name} name="editInput" />
+          <input
+            defaultValue={name}
+            value={value}
+            onChange={e => setValue(e.target.value)}
+          />
           <button type="submit">Edit</button>
         </form>
       )}

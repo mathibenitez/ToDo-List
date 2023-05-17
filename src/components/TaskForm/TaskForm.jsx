@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 
 export const TaskForm = ({ addTask }) => {
-  const [value, setValue] = useState('')
+  const [inputState, setInputState] = useState({
+    value: '',
+    error: false
+  })
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -10,6 +13,8 @@ export const TaskForm = ({ addTask }) => {
 
     setValue('')
   }
+
+  const onChangeHandle = (value, error)
 
   return (
     <div>
