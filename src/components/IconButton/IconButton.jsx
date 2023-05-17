@@ -1,5 +1,5 @@
 import React from 'react'
 
-export const IconButton = ({ props, children }) => {
-  return <button {...props}>{children}</button>
+export const IconButton = ({}) => {
+  return <button></button>
 }

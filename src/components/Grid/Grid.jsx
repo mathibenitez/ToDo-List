@@ -6,7 +6,7 @@ export const Grid = ({ tasks }) => {
     <div>
       <ul>
         {tasks.map(({ id, task }) => (
-          <Task key={id} name={task}></Task>
+          <Task key={id} id={id} name={task}></Task>
         ))}
       </ul>
     </div>

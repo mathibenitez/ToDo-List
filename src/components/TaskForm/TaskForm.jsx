@@ -1,6 +1,4 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import { AddTask } from '../Button/Button'
+import React, { useState } from 'react'
 
 export const TaskForm = ({ addTask }) => {
   const [value, setValue] = useState('')
@@ -9,6 +7,8 @@ export const TaskForm = ({ addTask }) => {
     e.preventDefault()
 
     addTask(value)
+
+    setValue('')
   }
 
   return (
@@ -16,7 +16,7 @@ export const TaskForm = ({ addTask }) => {
       <form onSubmit={handleSubmit}>
         <input
           placeholder="task example..."
-          value={value.value}
+          value={value}
           onChange={e => setValue(e.target.value)}
         ></input>
         <button type="submit">Add task</button>

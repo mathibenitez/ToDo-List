@@ -1,23 +1,41 @@
 import { Pencil, TrashCan } from 'akar-icons'
-import React, { useRef } from 'react'
-import { IconButton } from '../IconButton/IconButton'
+import React, { useContext, useState } from 'react'
+import { TaskProvider } from '../TodoWrapper/TodoWrapper'
 
-export const Task = ({ id, name, onDelete, onEdit }) => {
-  const taskRef = useRef()
+export const Task = ({ id, name }) => {
+  const { onDeleteTask, onEditTask } = useContext(TaskProvider)
+  const [isEditing, setIsEditing] = useState(false)
+
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    const nameEdited = e.target.editInput.value
+
+    onEditTask(id, nameEdited)
+    setIsEditing(false)
+  }
 
   return (
-    <div key={id} ref={taskRef}>
+    <div key={id}>
+      {!isEditing ? (
+        <div>
+          <span>{name}</span>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <input defaultValue={name} name="editInput" />
+          <button type="submit">Edit</button>
+        </form>
+      )}
+
       <div>
-        <span>{name}</span>
+        <button onClick={() => setIsEditing(lastvalue => !lastvalue)}>
+          <Pencil strokeWidth={2}></Pencil>
+        </button>
+        <button onClick={() => onDeleteTask(id)}>
+          <TrashCan strokeWidth={2}></TrashCan>
+        </button>
       </div>
-      <IconButton
-        onClick={() => {
-          onEdit({ id: id, name: name })
-        }}
-      >
-        <Pencil strokeWidth={2}></Pencil>
-        <TrashCan strokeWidth={2}></TrashCan>
-      </IconButton>
     </div>
   )
 }
