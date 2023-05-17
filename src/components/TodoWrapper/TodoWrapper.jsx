@@ -14,7 +14,7 @@ export const TodoWrapper = () => {
       {
         id: crypto.randomUUID(), // uuidv4(),
         task: todoTask,
-        isEditing: false
+        error: undefined
       }
     ])
   }

@@ -1,30 +1,44 @@
 import React, { useState } from 'react'
+import { validTask } from '../../utils/validateTask'
 
 export const TaskForm = ({ addTask }) => {
   const [inputState, setInputState] = useState({
     value: '',
-    error: false
+    error: undefined
   })
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    addTask(value)
+    addTask(inputState.value)
 
-    setValue('')
+    setInputState({
+      value: '',
+      error: undefined
+    })
   }
 
-  const onChangeHandle = (value, error)
+  const onChangeHandle = value => {
+    const error = validTask(value)
+
+    setInputState({ value, error })
+  }
+
+  const isButtonDisabled =
+    Boolean(inputState.error) || inputState.value.trim() === ''
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input
           placeholder="task example..."
-          value={value}
-          onChange={e => setValue(e.target.value)}
+          value={inputState.value}
+          onChange={e => onChangeHandle(e.target.value)}
         ></input>
-        <button type="submit">Add task</button>
+        {inputState.error && <p>{inputState.error}</p>}
+        <button disabled={isButtonDisabled} type="submit">
+          Add task
+        </button>
 
         {/* <AddTask onClick={handleSubmit}></AddTask> */}
       </form>

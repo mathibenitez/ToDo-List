@@ -22,11 +22,7 @@ export const Task = ({ id, name }) => {
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <input
-            defaultValue={name}
-            value={value}
-            onChange={e => setValue(e.target.value)}
-          />
+          <input value={value} onChange={e => setValue(e.target.value)} />
           <button type="submit">Edit</button>
         </form>
       )}
