@@ -1,17 +1,10 @@
-import { useState } from 'react'
-import { AddTask } from './components/AddTask/AddTask'
-import { InputTask } from './components/InputTask/InputTask'
+import { TaskForm } from './components/TaskForm/TaskForm'
+import { TodoWrapper } from './components/TodoWrapper/TodoWrapper'
 
 function App() {
-  const [task, setTask] = useState([])
-
   return (
     <>
-      <div>
-        <h1>Task list</h1>
-        <InputTask></InputTask>
-        <AddTask onClick={() => setTask()}></AddTask>
-      </div>
+      <TodoWrapper></TodoWrapper>
     </>
   )
 }
