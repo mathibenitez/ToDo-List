@@ -1,0 +1,37 @@
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  /* gap: 10px; */
+}
+
+.input_add_task {
+  width: 400px;
+  height: 40px;
+  box-shadow: var(--box-shadow);
+  /* border-radius: var(--border-radius); */
+  border: 1px solid var(--background-task);
+  background-color: var(--tittle);
+  color: var(--white);
+}
+
+::placeholder {
+  color: var(--placeholder-text);
+}
+
+.button_add_task {
+  width: 145px;
+  height: 40px;
+  border: 1px solid var(--background-task);
+  box-shadow: var(--box-shadow);
+  /* border-radius: 8px; */
+  background-color: var(--background-task);
+  color: var(--white);
+}
+
+.error_message {
+  color: red;
+}

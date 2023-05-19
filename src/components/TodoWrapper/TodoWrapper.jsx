@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react'
 import { Grid } from '../Grid/Grid'
 import { TaskForm } from '../TaskForm/TaskForm'
+import style from './TodoWrapper.module.css'
 
 export const TaskProvider = createContext({ error: 'Not access provider' })
 
@@ -14,7 +15,8 @@ export const TodoWrapper = () => {
       {
         id: crypto.randomUUID(), // uuidv4(),
         task: todoTask,
-        error: undefined
+        error: undefined,
+        isCompleted: false
       }
     ])
   }
@@ -29,13 +31,30 @@ export const TodoWrapper = () => {
     setTasks(lastValues => lastValues.filter(task => task.id !== id))
   }
 
+  const onToggleComplete = id => {
+    setTasks(
+      tasks.map(task =>
+        task.id === id
+          ? {
+              ...task,
+              isCompleted: !task.isCompleted
+            }
+          : task
+      )
+    )
+  }
+
   return (
     <div>
-      <h1>Task list</h1>
-      <TaskForm addTask={onAddTask}></TaskForm>
-      <TaskProvider.Provider value={{ onDeleteTask, onEditTask }}>
-        <Grid tasks={tasks}></Grid>
-      </TaskProvider.Provider>
+      <h1 className={style.tittle}>TASK LIST</h1>
+      <div className={style.content}>
+        <TaskForm addTask={onAddTask}></TaskForm>
+        <TaskProvider.Provider
+          value={{ onDeleteTask, onEditTask, onToggleComplete }}
+        >
+          <Grid tasks={tasks}></Grid>
+        </TaskProvider.Provider>
+      </div>
     </div>
   )
 }

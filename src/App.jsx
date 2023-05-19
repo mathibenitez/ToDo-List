@@ -1,4 +1,4 @@
-import { TaskForm } from './components/TaskForm/TaskForm'
+import './App.css'
 import { TodoWrapper } from './components/TodoWrapper/TodoWrapper'
 
 function App() {

@@ -1,9 +1,11 @@
 import { Pencil, TrashCan } from 'akar-icons'
 import React, { useContext, useState } from 'react'
 import { TaskProvider } from '../TodoWrapper/TodoWrapper'
+import styles from './Task.module.css'
 
-export const Task = ({ id, name }) => {
-  const { onDeleteTask, onEditTask } = useContext(TaskProvider)
+export const Task = ({ id, name, isCompleted }) => {
+  const { onDeleteTask, onEditTask, onToggleComplete } =
+    useContext(TaskProvider)
   const [isEditing, setIsEditing] = useState(false)
   const [value, setValue] = useState(name)
 
@@ -18,7 +20,12 @@ export const Task = ({ id, name }) => {
     <div key={id}>
       {!isEditing ? (
         <div>
-          <span>{name}</span>
+          <p
+            onClick={() => onToggleComplete(id)}
+            className={`${isCompleted ? styles.completed : ''}`}
+          >
+            {name}
+          </p>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>

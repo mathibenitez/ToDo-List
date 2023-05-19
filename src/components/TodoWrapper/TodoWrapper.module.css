@@ -1,0 +1,16 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.tittle {
+  font-size: 100px;
+  font-family: 'Bebas Neue', sans-serif;
+  padding-top: 20px;
+  letter-spacing: 4px;
+  color: var(--tittle);
+}
+
+.content {
+  background-color: var(--tittle);
+}

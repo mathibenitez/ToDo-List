@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { validTask } from '../../utils/validateTask'
+// import './TaskForm.module.css'
+import style from './TaskForm.module.css'
 
 export const TaskForm = ({ addTask }) => {
   const [inputState, setInputState] = useState({
@@ -31,17 +33,22 @@ export const TaskForm = ({ addTask }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
+          className={style.input_add_task}
           placeholder="task example..."
           value={inputState.value}
           onChange={e => onChangeHandle(e.target.value)}
         ></input>
-        {inputState.error && <p>{inputState.error}</p>}
-        <button disabled={isButtonDisabled} type="submit">
+        <button
+          className={style.button_add_task}
+          // disabled={isButtonDisabled}
+          type="submit"
+        >
           Add task
         </button>
-
-        {/* <AddTask onClick={handleSubmit}></AddTask> */}
       </form>
+      {inputState.error && (
+        <p className={style.error_message}>{inputState.error}</p>
+      )}
     </div>
   )
 }
