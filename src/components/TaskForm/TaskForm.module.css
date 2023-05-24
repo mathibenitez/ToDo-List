@@ -1,9 +1,8 @@
-form {
+.form_format {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 40px;
-  padding: 8px 16px;
+  padding: 30px 20px;
   border-radius: 8px;
   /* gap: 10px; */
 }
@@ -11,25 +10,39 @@ form {
 .input_add_task {
   width: 400px;
   height: 40px;
+  padding-left: 5px;
   box-shadow: var(--box-shadow);
-  /* border-radius: var(--border-radius); */
-  border: 1px solid var(--background-task);
-  background-color: var(--tittle);
+  border: 1px solid var(--secondary-color);
+  background-color: var(--primary-color);
   color: var(--white);
+  outline: none;
+
 }
 
 ::placeholder {
   color: var(--placeholder-text);
+  opacity: .5;
 }
 
 .button_add_task {
   width: 145px;
   height: 40px;
-  border: 1px solid var(--background-task);
+  border: 1px solid var(--secondary-color);
   box-shadow: var(--box-shadow);
-  /* border-radius: 8px; */
-  background-color: var(--background-task);
+  background-color: var(--secondary-color);
   color: var(--white);
+  text-align: center;
+}
+
+p{
+  width: 300px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.button_add_task:hover{
+  opacity: 1;
 }
 
 .error_message {

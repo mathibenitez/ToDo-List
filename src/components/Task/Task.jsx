@@ -1,6 +1,9 @@
-import { Pencil, TrashCan } from 'akar-icons'
+import { Check, Cross, Pencil, TrashCan } from 'akar-icons'
 import React, { useContext, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { TaskProvider } from '../TodoWrapper/TodoWrapper'
+import { Modal } from '../Modal'
+import { TaskDeleteForm } from '../TaskDeleteForm'
 import styles from './Task.module.css'
 
 export const Task = ({ id, name, isCompleted }) => {
@@ -16,10 +19,13 @@ export const Task = ({ id, name, isCompleted }) => {
     setIsEditing(false)
   }
 
+  /* -------- */
+  const [contentModal, setContentModal] = useState()
+
   return (
-    <div key={id}>
+    <div key={id} className={styles.task_format}>
       {!isEditing ? (
-        <div>
+        <div className={styles.task}>
           <p
             onClick={() => onToggleComplete(id)}
             className={`${isCompleted ? styles.completed : ''}`}
@@ -28,20 +34,42 @@ export const Task = ({ id, name, isCompleted }) => {
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <input value={value} onChange={e => setValue(e.target.value)} />
-          <button type="submit">Edit</button>
-        </form>
+        <div>
+          <form className={styles.check_edit} onSubmit={handleSubmit}>
+            <input
+              className={styles.input_edit_task}
+              value={value}
+              onChange={e => setValue(e.target.value)}
+            />
+            <button type="submit">
+              <Check strokeWidth={3}></Check>
+            </button>
+          </form>
+        </div>
       )}
-
-      <div>
-        <button onClick={() => setIsEditing(lastvalue => !lastvalue)}>
-          <Pencil strokeWidth={2}></Pencil>
-        </button>
-        <button onClick={() => onDeleteTask(id)}>
-          <TrashCan strokeWidth={2}></TrashCan>
-        </button>
+      <div className={styles.icons_task}>
+        <div>
+          <button onClick={() => setIsEditing(lastvalue => !lastvalue)}>
+            <Pencil strokeWidth={2}></Pencil>
+          </button>
+        </div>
+        <div>
+          <button
+            onClick={() =>
+              setContentModal(
+                <TaskDeleteForm
+                  taskName={name}
+                  handleDeleteTask={() => onDeleteTask(id)}
+                  handleCancel={() => setContentModal()}
+                />
+              )
+            }
+          >
+            <TrashCan strokeWidth={2}></TrashCan>
+          </button>
+        </div>
       </div>
+      <Modal closeModal={() => setContentModal()}>{contentModal}</Modal>
     </div>
   )
 }

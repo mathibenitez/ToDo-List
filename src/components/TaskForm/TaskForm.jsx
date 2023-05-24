@@ -31,7 +31,7 @@ export const TaskForm = ({ addTask }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className={style.form_format} onSubmit={handleSubmit}>
         <input
           className={style.input_add_task}
           placeholder="task example..."

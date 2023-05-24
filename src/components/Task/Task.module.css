@@ -2,3 +2,45 @@
   opacity: 0.5;
   text-decoration: line-through;
 }
+
+.task_format{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task{
+  color: var(--white);
+}
+
+.icons_task{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.check_edit{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.input_edit_task{
+  width: 250px;
+  height: 20px;
+  padding-left: 5px;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--secondary-color);
+  background-color: var(--primary-color);
+  color: var(--white);
+  outline: none;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+}

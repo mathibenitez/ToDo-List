@@ -1,0 +1,29 @@
+.buttons_form{
+  padding: .5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cancel,
+.delete {
+  padding: .5rem 1rem;
+  border-radius: .25rem;
+  border: 1px solid var(--secondary-color);
+}
+
+.cancel {
+  background-color: #eaeaea;
+  color: var(--primary-color);
+}
+
+.delete {
+  background-color: var(--primary-color);
+  color: #eaeaea;
+}

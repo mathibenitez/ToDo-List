@@ -7,6 +7,7 @@ export const TaskProvider = createContext({ error: 'Not access provider' })
 
 export const TodoWrapper = () => {
   const [tasks, setTasks] = useState([])
+  console.log('sexo tantrico animal')
   // const [currentDiv, setCurrentDiv] = useState(null)
 
   const onAddTask = todoTask => {
@@ -45,8 +46,8 @@ export const TodoWrapper = () => {
   }
 
   return (
-    <div>
-      <h1 className={style.tittle}>TASK LIST</h1>
+    <div className={style.wrapper}>
+      <h1 className={style.tittle}>Task list</h1>
       <div className={style.content}>
         <TaskForm addTask={onAddTask}></TaskForm>
         <TaskProvider.Provider
