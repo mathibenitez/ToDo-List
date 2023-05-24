@@ -10,18 +10,18 @@
 .input_add_task {
   width: 400px;
   height: 40px;
-  padding-left: 5px;
+  padding-left: 1rem;
   box-shadow: var(--box-shadow);
   border: 1px solid var(--secondary-color);
   background-color: var(--primary-color);
   color: var(--white);
   outline: none;
-
+  letter-spacing: 1px;
 }
 
 ::placeholder {
   color: var(--placeholder-text);
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .button_add_task {
@@ -34,14 +34,7 @@
   text-align: center;
 }
 
-p{
-  width: 300px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.button_add_task:hover{
+.button_add_task:hover {
   opacity: 1;
 }
 

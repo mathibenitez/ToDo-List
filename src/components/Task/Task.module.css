@@ -1,36 +1,55 @@
 .completed {
+  display: inline-block;
   opacity: 0.5;
   text-decoration: line-through;
 }
 
-.task_format{
+.task_text {
+  max-width: 300px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.task_completed {
+  color: green;
+  margin-left: 6px;
+  text-decoration: none;
+}
+
+.completed_format {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.task_icons_format {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.task{
+.task {
   color: var(--white);
 }
 
-.icons_task{
+.icons_task {
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 10px;
 }
 
-.check_edit{
+.check_edit {
   display: flex;
   gap: 5px;
   align-items: center;
 }
 
-.input_edit_task{
+.input_edit_task {
   width: 250px;
   height: 20px;
-  padding-left: 5px;
+  padding-left: 1rem;
   box-shadow: var(--box-shadow);
   border: 1px solid var(--secondary-color);
   background-color: var(--primary-color);
@@ -38,7 +57,7 @@
   outline: none;
 }
 
-button{
+button {
   background-color: transparent;
   border: none;
   cursor: pointer;

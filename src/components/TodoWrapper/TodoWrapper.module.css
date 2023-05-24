@@ -5,7 +5,7 @@
 
 .tittle {
   font-size: 100px;
-  /* font-family: 'Bebas Neue', sans-serif; */
+  font-family: 'Roboto Condensed', sans-serif;
   letter-spacing: 20px;
   color: var(--white);
 }
@@ -15,7 +15,7 @@
   height: 600px;
 }
 
-.wrapper{
+.wrapper {
   background-color: var(--primary-color);
   width: 640px;
   display: flex;

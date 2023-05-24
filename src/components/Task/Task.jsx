@@ -1,9 +1,8 @@
-import { Check, Cross, Pencil, TrashCan } from 'akar-icons'
+import { Check, Pencil, TrashCan } from 'akar-icons'
 import React, { useContext, useState } from 'react'
-import { createPortal } from 'react-dom'
-import { TaskProvider } from '../TodoWrapper/TodoWrapper'
 import { Modal } from '../Modal'
 import { TaskDeleteForm } from '../TaskDeleteForm'
+import { TaskProvider } from '../TodoWrapper/TodoWrapper'
 import styles from './Task.module.css'
 
 export const Task = ({ id, name, isCompleted }) => {
@@ -23,15 +22,22 @@ export const Task = ({ id, name, isCompleted }) => {
   const [contentModal, setContentModal] = useState()
 
   return (
-    <div key={id} className={styles.task_format}>
+    <div key={id} className={styles.task_icons_format}>
       {!isEditing ? (
         <div className={styles.task}>
-          <p
-            onClick={() => onToggleComplete(id)}
-            className={`${isCompleted ? styles.completed : ''}`}
-          >
-            {name}
-          </p>
+          <div className={styles.completed_format}>
+            <p
+              onClick={() => onToggleComplete(id)}
+              className={`${styles.task_text} ${
+                isCompleted ? styles.completed : ''
+              }`}
+            >
+              {name}
+            </p>
+            {isCompleted && (
+              <span className={styles.task_completed}>Completed!</span>
+            )}
+          </div>
         </div>
       ) : (
         <div>
